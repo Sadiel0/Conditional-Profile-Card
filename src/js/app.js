@@ -31,21 +31,32 @@ function render(variables = {}) {
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-    `;
+                ${cover}
+              <img src="${variables.avatarURL}" class="photo" />
+              <h1>${!variables.name ? "Your" : variables.name} ${
+    !variables.lastname ? "Name" : variables.lastname
+  }</h1>
+              <h2>${!variables.role ? "Role" : variables.role}</h2>
+              <h3>${!variables.city ? "City" : variables.city}, ${
+    !variables.country ? "Country" : variables.country
+  }</h3>
+              <ul class="${variables.socialMediaPosition}">
+                <li><a href="https://twitter.com/${
+                  !variables.twitter ? "4GeeksAcademy" : variables.twitter
+                }"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://github.com/${
+                  !variables.github ? "4GeeksAcademy" : variables.github
+                }"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/${
+                  !variables.linkedin ? "4GeeksAcademy" : variables.linkedin
+                }"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/${
+                  !variables.instagram ? "4GeeksAcademy" : variables.instagram
+                }"><i class="fab fa-instagram"></i></a></li>
+              </ul>
+            </div>
+        `;
 }
-
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
@@ -56,12 +67,13 @@ window.onload = function() {
     // this is the url of the image that will used as background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL:
+      "https://www.mensjournal.com/wp-content/uploads/mf/_main2_conor_0.jpg?w=900&quality=86&strip=all",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
